@@ -49,7 +49,18 @@ class MainActivity : AppCompatActivity() {
             recursos = mutableListOf(),
             rol = rol,
             onEditar = { recurso ->
-                Toast.makeText(this, "Editar: ${recurso.titulo}", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, RecursoFormActivity::class.java)
+
+                intent.putExtra("id", recurso.id)
+                intent.putExtra("titulo", recurso.titulo)
+                intent.putExtra("descripcion", recurso.descripcion)
+                intent.putExtra("tipo", recurso.tipo)
+                intent.putExtra("enlace", recurso.enlace)
+                intent.putExtra("imagen", recurso.imagen)
+                intent.putExtra("ratingPromedio", recurso.ratingPromedio)
+                intent.putExtra("totalRatings", recurso.totalRatings)
+
+                startActivity(intent)
             },
             onEliminar = { recurso ->
                 confirmarEliminacion(recurso)
@@ -62,6 +73,11 @@ class MainActivity : AppCompatActivity() {
         btnBuscar.setOnClickListener {
             val texto = edtBuscar.text.toString().trim().lowercase()
 
+            if (texto.isEmpty()) {
+                adapter.actualizarLista(listaRecursosOriginal)
+                return@setOnClickListener
+            }
+
             val filtrados = listaRecursosOriginal.filter { recurso ->
                 recurso.id?.lowercase()?.contains(texto) == true ||
                         recurso.titulo.lowercase().contains(texto) ||
@@ -69,10 +85,14 @@ class MainActivity : AppCompatActivity() {
             }
 
             adapter.actualizarLista(filtrados)
+
+            if (filtrados.isEmpty()) {
+                Toast.makeText(this, "No se encontraron recursos.", Toast.LENGTH_SHORT).show()
+            }
         }
 
         btnAgregar.setOnClickListener {
-            Toast.makeText(this, "Aquí abriremos formulario para agregar", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, RecursoFormActivity::class.java))
         }
 
         btnLogout.setOnClickListener {
@@ -86,8 +106,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        val progressBar = findViewById<ProgressBar>(R.id.progressBar)
-        cargarRecursos(progressBar)
+
+        if (::adapter.isInitialized) {
+            val progressBar = findViewById<ProgressBar>(R.id.progressBar)
+            cargarRecursos(progressBar)
+        }
     }
 
     private fun cargarRecursos(progressBar: ProgressBar) {

@@ -16,6 +16,7 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true">
+            <activity android:name=".RecursoFormActivity" />
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

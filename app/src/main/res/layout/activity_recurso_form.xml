@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F6F8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/txtTituloFormulario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Formulario de recurso"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#1E293B"
+            android:layout_marginBottom="20dp" />
+
+        <EditText
+            android:id="@+id/edtTituloRecurso"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Título"
+            android:padding="12dp"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/edtDescripcionRecurso"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:hint="Descripción"
+            android:gravity="top"
+            android:padding="12dp"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/edtTipoRecurso"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Tipo: Libro, Video, Curso, Artículo"
+            android:padding="12dp"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/edtEnlaceRecurso"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Enlace"
+            android:inputType="textUri"
+            android:padding="12dp"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/edtImagenRecurso"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="URL de imagen"
+            android:inputType="textUri"
+            android:padding="12dp"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="20dp" />
+
+        <Button
+            android:id="@+id/btnGuardarRecurso"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Guardar recurso"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+</ScrollView>
