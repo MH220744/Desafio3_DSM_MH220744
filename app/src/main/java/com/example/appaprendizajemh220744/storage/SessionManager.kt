@@ -20,12 +20,20 @@ class SessionManager(context: Context) {
         return prefs.getBoolean("logueado", false)
     }
 
-    fun obtenerRol(): String {
-        return prefs.getString("rol", "Estudiante") ?: "Estudiante"
-    }
-
     fun obtenerIdUsuario(): String {
         return prefs.getString("id", "") ?: ""
+    }
+
+    fun obtenerNombre(): String {
+        return prefs.getString("nombre", "") ?: ""
+    }
+
+    fun obtenerEmail(): String {
+        return prefs.getString("email", "") ?: ""
+    }
+
+    fun obtenerRol(): String {
+        return prefs.getString("rol", "Estudiante") ?: "Estudiante"
     }
 
     fun cerrarSesion() {
