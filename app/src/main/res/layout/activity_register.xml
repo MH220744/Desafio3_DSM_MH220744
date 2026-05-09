@@ -8,7 +8,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="28dp">
+        android:paddingStart="28dp"
+        android:paddingEnd="28dp"
+        android:paddingBottom="28dp"
+        android:paddingTop="70dp">
+
+        <Button
+            android:id="@+id/btnRegresarRegistro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="← Regresar"
+            android:textAllCaps="false"
+            android:layout_marginBottom="18dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -17,7 +28,6 @@
             android:textSize="30sp"
             android:textStyle="bold"
             android:textColor="#1E293B"
-            android:layout_marginTop="40dp"
             android:layout_marginBottom="8dp" />
 
         <TextView

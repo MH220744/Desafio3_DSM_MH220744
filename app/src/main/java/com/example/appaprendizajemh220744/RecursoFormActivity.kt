@@ -25,15 +25,20 @@ class RecursoFormActivity : AppCompatActivity() {
         val edtEnlace = findViewById<EditText>(R.id.edtEnlaceRecurso)
         val edtImagen = findViewById<EditText>(R.id.edtImagenRecurso)
         val btnGuardar = findViewById<Button>(R.id.btnGuardarRecurso)
+        val btnRegresar = findViewById<Button>(R.id.btnRegresar)
+
+        btnRegresar.setOnClickListener {
+            finish()
+        }
 
         recursoId = intent.getStringExtra("id")
 
         if (recursoId != null) {
-            edtTitulo.setText(intent.getStringExtra("titulo"))
-            edtDescripcion.setText(intent.getStringExtra("descripcion"))
-            edtTipo.setText(intent.getStringExtra("tipo"))
-            edtEnlace.setText(intent.getStringExtra("enlace"))
-            edtImagen.setText(intent.getStringExtra("imagen"))
+            edtTitulo.setText(intent.getStringExtra("titulo") ?: "")
+            edtDescripcion.setText(intent.getStringExtra("descripcion") ?: "")
+            edtTipo.setText(intent.getStringExtra("tipo") ?: "")
+            edtEnlace.setText(intent.getStringExtra("enlace") ?: "")
+            edtImagen.setText(intent.getStringExtra("imagen") ?: "")
             ratingPromedioActual = intent.getDoubleExtra("ratingPromedio", 0.0)
             totalRatingsActual = intent.getIntExtra("totalRatings", 0)
         }

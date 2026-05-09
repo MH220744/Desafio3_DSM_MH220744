@@ -24,6 +24,11 @@ class RegisterActivity : AppCompatActivity() {
         val edtPassword = findViewById<EditText>(R.id.edtPasswordRegistro)
         val spinnerRol = findViewById<Spinner>(R.id.spinnerRol)
         val btnRegistrar = findViewById<Button>(R.id.btnRegistrar)
+        val btnRegresarRegistro = findViewById<Button>(R.id.btnRegresarRegistro)
+
+        btnRegresarRegistro.setOnClickListener {
+            finish()
+        }
 
         val roles = listOf("Estudiante", "Docente")
 
