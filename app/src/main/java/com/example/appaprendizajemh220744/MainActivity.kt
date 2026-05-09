@@ -15,13 +15,29 @@ import com.example.appaprendizajemh220744.adapter.RecursoAdapter
 import com.example.appaprendizajemh220744.controller.RecursoController
 import com.example.appaprendizajemh220744.model.Recurso
 import com.example.appaprendizajemh220744.storage.SessionManager
+import com.example.appaprendizajemh220744.storage.FavoritosManager
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var favoritosManager: FavoritosManager
     private val recursoController = RecursoController()
     private lateinit var sessionManager: SessionManager
     private lateinit var adapter: RecursoAdapter
 
+    private fun alternarFavorito(recurso: Recurso) {
+        val idUsuario = sessionManager.obtenerIdUsuario()
+        val idRecurso = recurso.id ?: return
+
+        if (favoritosManager.esFavorito(idUsuario, idRecurso)) {
+            favoritosManager.quitarFavorito(idUsuario, idRecurso)
+            Toast.makeText(this, "Recurso quitado de favoritos.", Toast.LENGTH_SHORT).show()
+        } else {
+            favoritosManager.agregarFavorito(idUsuario, idRecurso)
+            Toast.makeText(this, "Recurso agregado a favoritos.", Toast.LENGTH_SHORT).show()
+        }
+
+        cargarRecursos(findViewById(R.id.progressBar))
+    }
     private var listaRecursosOriginal = listOf<Recurso>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +45,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         sessionManager = SessionManager(this)
+        favoritosManager = FavoritosManager(this)
 
         val recyclerRecursos = findViewById<RecyclerView>(R.id.recyclerRecursos)
         val edtBuscar = findViewById<EditText>(R.id.edtBuscar)
@@ -48,6 +65,10 @@ class MainActivity : AppCompatActivity() {
         adapter = RecursoAdapter(
             recursos = mutableListOf(),
             rol = rol,
+            favoritosIds = favoritosManager.obtenerFavoritos(sessionManager.obtenerIdUsuario()),
+            onFavorito = { recurso ->
+                alternarFavorito(recurso)
+            },
             onEditar = { recurso ->
                 val intent = Intent(this, RecursoFormActivity::class.java)
 

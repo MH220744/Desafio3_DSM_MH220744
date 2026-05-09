@@ -17,6 +17,8 @@ import com.example.appaprendizajemh220744.model.Recurso
 class RecursoAdapter(
     private val recursos: MutableList<Recurso>,
     private val rol: String,
+    private val favoritosIds: Set<String>,
+    private val onFavorito: (Recurso) -> Unit,
     private val onEditar: (Recurso) -> Unit,
     private val onEliminar: (Recurso) -> Unit
 ) : RecyclerView.Adapter<RecursoAdapter.RecursoViewHolder>() {
@@ -28,6 +30,7 @@ class RecursoAdapter(
         val txtDescripcion: TextView = view.findViewById(R.id.txtDescripcion)
         val txtEnlace: TextView = view.findViewById(R.id.txtEnlace)
         val txtRating: TextView = view.findViewById(R.id.txtRating)
+        val btnFavorito: Button = view.findViewById(R.id.btnFavorito)
         val layoutBotonesDocente: LinearLayout = view.findViewById(R.id.layoutBotonesDocente)
         val btnEditar: Button = view.findViewById(R.id.btnEditar)
         val btnEliminar: Button = view.findViewById(R.id.btnEliminar)
@@ -41,6 +44,7 @@ class RecursoAdapter(
 
     override fun onBindViewHolder(holder: RecursoViewHolder, position: Int) {
         val recurso = recursos[position]
+        val idRecurso = recurso.id ?: ""
 
         holder.txtTitulo.text = recurso.titulo
         holder.txtTipo.text = recurso.tipo
@@ -56,6 +60,22 @@ class RecursoAdapter(
         holder.txtEnlace.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(recurso.enlace))
             holder.itemView.context.startActivity(intent)
+        }
+
+        if (rol == "Estudiante") {
+            holder.btnFavorito.visibility = View.VISIBLE
+
+            holder.btnFavorito.text = if (favoritosIds.contains(idRecurso)) {
+                "Quitar de favoritos"
+            } else {
+                "Agregar a favoritos"
+            }
+        } else {
+            holder.btnFavorito.visibility = View.GONE
+        }
+
+        holder.btnFavorito.setOnClickListener {
+            onFavorito(recurso)
         }
 
         if (rol == "Docente") {

@@ -7,8 +7,7 @@ class FavoritosManager(context: Context) {
     private val prefs = context.getSharedPreferences("favoritos_usuario", Context.MODE_PRIVATE)
 
     fun esFavorito(idUsuario: String, idRecurso: String): Boolean {
-        val favoritos = obtenerFavoritos(idUsuario)
-        return favoritos.contains(idRecurso)
+        return obtenerFavoritos(idUsuario).contains(idRecurso)
     }
 
     fun agregarFavorito(idUsuario: String, idRecurso: String) {

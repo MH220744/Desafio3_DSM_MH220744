@@ -67,6 +67,14 @@
             android:textColor="#F59E0B"
             android:layout_marginTop="8dp" />
 
+        <Button
+            android:id="@+id/btnFavorito"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agregar a favoritos"
+            android:textAllCaps="false"
+            android:layout_marginTop="10dp" />
+
         <LinearLayout
             android:id="@+id/layoutBotonesDocente"
             android:layout_width="match_parent"
