@@ -46,8 +46,8 @@ class MainActivity : AppCompatActivity() {
 
         val rol = sessionManager.obtenerRol()
 
-        btnAgregar.visibility = if (rol == "Docente") View.VISIBLE else View.GONE
-        btnVerFavoritos.visibility = if (rol == "Estudiante") View.VISIBLE else View.GONE
+        btnAgregar.visibility = if (rol == getString(R.string.rol_docente)) View.VISIBLE else View.GONE
+        btnVerFavoritos.visibility = if (rol == getString(R.string.rol_estudiante)) View.VISIBLE else View.GONE
 
         adapter = RecursoAdapter(
             recursos = mutableListOf(),
@@ -121,10 +121,10 @@ class MainActivity : AppCompatActivity() {
             mostrandoFavoritos = !mostrandoFavoritos
 
             if (mostrandoFavoritos) {
-                btnVerFavoritos.text = "Ver todos"
+                btnVerFavoritos.text = getString(R.string.ver_todos)
                 mostrarSoloFavoritos(edtBuscar.text.toString())
             } else {
-                btnVerFavoritos.text = "Ver favoritos"
+                btnVerFavoritos.text = getString(R.string.ver_favoritos)
                 filtrarRecursos(edtBuscar.text.toString())
             }
         }
@@ -198,7 +198,7 @@ class MainActivity : AppCompatActivity() {
         val idUsuario = sessionManager.obtenerIdUsuario()
 
         if (idUsuario.isEmpty()) {
-            Toast.makeText(this, "No se encontró el usuario actual.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.no_usuario_actual), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -222,7 +222,7 @@ class MainActivity : AppCompatActivity() {
         adapter.actualizarLista(favoritos)
 
         if (favoritos.isEmpty()) {
-            Toast.makeText(this, "No tienes recursos favoritos.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.sin_favoritos), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -231,21 +231,21 @@ class MainActivity : AppCompatActivity() {
         val idRecurso = recurso.id
 
         if (idUsuario.isEmpty()) {
-            Toast.makeText(this, "No se encontró el usuario actual.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.no_usuario_actual), Toast.LENGTH_SHORT).show()
             return
         }
 
         if (idRecurso.isNullOrEmpty()) {
-            Toast.makeText(this, "Este recurso no tiene ID válido.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.recurso_sin_id), Toast.LENGTH_SHORT).show()
             return
         }
 
         if (favoritosManager.esFavorito(idUsuario, idRecurso)) {
             favoritosManager.quitarFavorito(idUsuario, idRecurso)
-            Toast.makeText(this, "Recurso quitado de favoritos.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.favorito_quitado), Toast.LENGTH_SHORT).show()
         } else {
             favoritosManager.agregarFavorito(idUsuario, idRecurso)
-            Toast.makeText(this, "Recurso agregado a favoritos.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.favorito_agregado), Toast.LENGTH_SHORT).show()
         }
 
         val favoritosActualizados = favoritosManager.obtenerFavoritos(idUsuario)
@@ -260,24 +260,24 @@ class MainActivity : AppCompatActivity() {
 
     private fun mostrarDialogoCalificacion(recurso: Recurso) {
         val opciones = arrayOf(
-            "1 estrella",
-            "2 estrellas",
-            "3 estrellas",
-            "4 estrellas",
-            "5 estrellas"
+            getString(R.string.una_estrella),
+            getString(R.string.dos_estrellas),
+            getString(R.string.tres_estrellas),
+            getString(R.string.cuatro_estrellas),
+            getString(R.string.cinco_estrellas)
         )
 
         var calificacionSeleccionada = 5
 
         AlertDialog.Builder(this)
-            .setTitle("Calificar recurso")
+            .setTitle(getString(R.string.calificar_titulo))
             .setSingleChoiceItems(opciones, 4) { _, which ->
                 calificacionSeleccionada = which + 1
             }
-            .setPositiveButton("Guardar") { _, _ ->
+            .setPositiveButton(getString(R.string.guardar)) { _, _ ->
                 guardarCalificacion(recurso, calificacionSeleccionada)
             }
-            .setNegativeButton("Cancelar", null)
+            .setNegativeButton(getString(R.string.cancelar), null)
             .show()
     }
 
@@ -285,7 +285,7 @@ class MainActivity : AppCompatActivity() {
         val idRecurso = recurso.id
 
         if (idRecurso.isNullOrEmpty()) {
-            Toast.makeText(this, "Este recurso no tiene ID válido.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.recurso_sin_id), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -310,7 +310,7 @@ class MainActivity : AppCompatActivity() {
             id = idRecurso,
             recurso = recursoActualizado,
             onSuccess = {
-                Toast.makeText(this, "Calificación guardada.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.calificacion_guardada), Toast.LENGTH_SHORT).show()
                 cargarRecursos(findViewById(R.id.progressBar))
             },
             onError = { mensaje ->
@@ -321,13 +321,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun confirmarEliminacion(recurso: Recurso) {
         AlertDialog.Builder(this)
-            .setTitle("Eliminar recurso")
-            .setMessage("¿Seguro que deseas eliminar ${recurso.titulo}?")
-            .setPositiveButton("Eliminar") { _, _ ->
+            .setTitle(getString(R.string.eliminar_recurso))
+            .setMessage(getString(R.string.confirmar_eliminar_recurso, recurso.titulo))
+            .setPositiveButton(getString(R.string.eliminar)) { _, _ ->
                 recursoController.eliminarRecurso(
                     id = recurso.id ?: "",
                     onSuccess = {
-                        Toast.makeText(this, "Recurso eliminado.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.recurso_eliminado), Toast.LENGTH_SHORT).show()
                         cargarRecursos(findViewById(R.id.progressBar))
                     },
                     onError = { mensaje ->
@@ -335,7 +335,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 )
             }
-            .setNegativeButton("Cancelar", null)
+            .setNegativeButton(getString(R.string.cancelar), null)
             .show()
     }
 }

@@ -67,6 +67,7 @@
     <string name="favorito_quitado">Recurso quitado de favoritos.</string>
     <string name="sin_favoritos">No tienes recursos favoritos.</string>
 
+    <!-- Calificación -->
     <string name="calificar_titulo">Calificar recurso</string>
     <string name="una_estrella">1 estrella</string>
     <string name="dos_estrellas">2 estrellas</string>
@@ -76,12 +77,18 @@
     <string name="guardar">Guardar</string>
     <string name="cancelar">Cancelar</string>
     <string name="calificacion_guardada">Calificación guardada.</string>
+    <string name="no_se_puede_calificar">No se puede calificar este recurso.</string>
 
+    <!-- CRUD -->
     <string name="eliminar_recurso">Eliminar recurso</string>
     <string name="confirmar_eliminar_recurso">¿Seguro que deseas eliminar %1$s?</string>
     <string name="recurso_eliminado">Recurso eliminado.</string>
     <string name="recurso_creado">Recurso creado correctamente.</string>
     <string name="recurso_actualizado">Recurso actualizado correctamente.</string>
+    <string name="error_cargar_recursos">No se pudieron cargar los recursos.</string>
+    <string name="error_crear_recurso">No se pudo crear el recurso.</string>
+    <string name="error_actualizar_recurso">No se pudo actualizar el recurso.</string>
+    <string name="error_eliminar_recurso">No se pudo eliminar el recurso.</string>
 
     <!-- Password -->
     <string name="password_error">La contraseña debe tener mínimo 12 caracteres, una mayúscula, una minúscula, un número y un carácter especial.</string>
