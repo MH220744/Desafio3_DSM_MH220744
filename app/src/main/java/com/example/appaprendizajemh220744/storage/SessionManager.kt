@@ -8,7 +8,7 @@ class SessionManager(context: Context) {
 
     fun guardarSesion(id: String, nombre: String, email: String, rol: String) {
         prefs.edit()
-            .putString("id", id)
+            .putString("id", id.ifEmpty { email })
             .putString("nombre", nombre)
             .putString("email", email)
             .putString("rol", rol)
@@ -21,7 +21,10 @@ class SessionManager(context: Context) {
     }
 
     fun obtenerIdUsuario(): String {
-        return prefs.getString("id", "") ?: ""
+        val id = prefs.getString("id", "") ?: ""
+        val email = prefs.getString("email", "") ?: ""
+
+        return id.ifEmpty { email }
     }
 
     fun obtenerNombre(): String {
