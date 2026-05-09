@@ -15,7 +15,7 @@
             android:id="@+id/txtTituloLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AprendeApp"
+            android:text="AppAprendizaje"
             android:textSize="32sp"
             android:textStyle="bold"
             android:textColor="#1E293B"

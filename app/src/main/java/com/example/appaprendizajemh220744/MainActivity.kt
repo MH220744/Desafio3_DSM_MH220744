@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: RecursoAdapter
 
     private var listaRecursosOriginal = listOf<Recurso>()
+    private var mostrandoFavoritos = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +40,14 @@ class MainActivity : AppCompatActivity() {
         val edtBuscar = findViewById<EditText>(R.id.edtBuscar)
         val btnBuscar = findViewById<Button>(R.id.btnBuscar)
         val btnAgregar = findViewById<Button>(R.id.btnAgregar)
+        val btnVerFavoritos = findViewById<Button>(R.id.btnVerFavoritos)
         val btnLogout = findViewById<Button>(R.id.btnLogout)
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
 
         val rol = sessionManager.obtenerRol()
 
         btnAgregar.visibility = if (rol == "Docente") View.VISIBLE else View.GONE
+        btnVerFavoritos.visibility = if (rol == "Estudiante") View.VISIBLE else View.GONE
 
         adapter = RecursoAdapter(
             recursos = mutableListOf(),
@@ -85,6 +88,7 @@ class MainActivity : AppCompatActivity() {
                 count: Int,
                 after: Int
             ) {
+                // No se necesita.
             }
 
             override fun onTextChanged(
@@ -93,15 +97,36 @@ class MainActivity : AppCompatActivity() {
                 before: Int,
                 count: Int
             ) {
-                filtrarRecursos(s.toString())
+                if (mostrandoFavoritos) {
+                    mostrarSoloFavoritos(s.toString())
+                } else {
+                    filtrarRecursos(s.toString())
+                }
             }
 
             override fun afterTextChanged(s: Editable?) {
+                // No se necesita.
             }
         })
 
         btnBuscar.setOnClickListener {
-            filtrarRecursos(edtBuscar.text.toString())
+            if (mostrandoFavoritos) {
+                mostrarSoloFavoritos(edtBuscar.text.toString())
+            } else {
+                filtrarRecursos(edtBuscar.text.toString())
+            }
+        }
+
+        btnVerFavoritos.setOnClickListener {
+            mostrandoFavoritos = !mostrandoFavoritos
+
+            if (mostrandoFavoritos) {
+                btnVerFavoritos.text = "Ver todos"
+                mostrarSoloFavoritos(edtBuscar.text.toString())
+            } else {
+                btnVerFavoritos.text = "Ver favoritos"
+                filtrarRecursos(edtBuscar.text.toString())
+            }
         }
 
         btnAgregar.setOnClickListener {
@@ -132,7 +157,14 @@ class MainActivity : AppCompatActivity() {
             onSuccess = { recursos ->
                 progressBar.visibility = View.GONE
                 listaRecursosOriginal = recursos
-                filtrarRecursos(findViewById<EditText>(R.id.edtBuscar).text.toString())
+
+                val textoBusqueda = findViewById<EditText>(R.id.edtBuscar).text.toString()
+
+                if (mostrandoFavoritos) {
+                    mostrarSoloFavoritos(textoBusqueda)
+                } else {
+                    filtrarRecursos(textoBusqueda)
+                }
             },
             onError = { mensaje ->
                 progressBar.visibility = View.GONE
@@ -158,6 +190,37 @@ class MainActivity : AppCompatActivity() {
         adapter.actualizarLista(filtrados)
     }
 
+    private fun mostrarSoloFavoritos(textoBusqueda: String = "") {
+        val idUsuario = sessionManager.obtenerIdUsuario()
+
+        if (idUsuario.isEmpty()) {
+            Toast.makeText(this, "No se encontró el usuario actual.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val favoritosIds = favoritosManager.obtenerFavoritos(idUsuario)
+
+        var favoritos = listaRecursosOriginal.filter { recurso ->
+            favoritosIds.contains(recurso.id)
+        }
+
+        val texto = textoBusqueda.trim().lowercase()
+
+        if (texto.isNotEmpty()) {
+            favoritos = favoritos.filter { recurso ->
+                recurso.id?.lowercase()?.contains(texto) == true ||
+                        recurso.titulo.lowercase().contains(texto) ||
+                        recurso.tipo.lowercase().contains(texto)
+            }
+        }
+
+        adapter.actualizarLista(favoritos)
+
+        if (favoritos.isEmpty()) {
+            Toast.makeText(this, "No tienes recursos favoritos.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     private fun alternarFavorito(recurso: Recurso) {
         val idUsuario = sessionManager.obtenerIdUsuario()
         val idRecurso = recurso.id
@@ -180,7 +243,11 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Recurso agregado a favoritos.", Toast.LENGTH_SHORT).show()
         }
 
-        cargarRecursos(findViewById(R.id.progressBar))
+        if (mostrandoFavoritos) {
+            mostrarSoloFavoritos(findViewById<EditText>(R.id.edtBuscar).text.toString())
+        } else {
+            cargarRecursos(findViewById(R.id.progressBar))
+        }
     }
 
     private fun mostrarDialogoCalificacion(recurso: Recurso) {
