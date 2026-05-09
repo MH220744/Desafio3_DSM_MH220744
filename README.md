@@ -2,6 +2,12 @@
 
 Aplicación móvil Android desarrollada en Kotlin para gestionar recursos de aprendizaje mediante una API dinámica. Permite visualizar, buscar, guardar favoritos, calificar recursos y administrar contenido según el rol del usuario.
 
+## 🎥 Video demostración
+
+Puedes ver el funcionamiento de la aplicación en el siguiente enlace:
+
+👉 [Ver video en YouTube](https://youtu.be/-D64-3x0zIM?si=Wgl3xD0jLxlO1Nsc)
+
 ## Autor
 
 Rodrigo Miranda
@@ -70,12 +76,6 @@ La URL base se configura en el archivo: network/RetrofitClient.kt
 
 📥 Descargar APK:  
 👉 [app-debug.apk](./apk/app-debug.apk)
-
-## 🎥 Video demostración
-
-Puedes ver el funcionamiento de la aplicación en el siguiente enlace:
-
-👉 [Ver video en YouTube](https://youtu.be/-D64-3x0zIM?si=Wgl3xD0jLxlO1Nsc)
 
 ## Links para visualizar las api
 
