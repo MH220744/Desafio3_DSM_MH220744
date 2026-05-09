@@ -17,14 +17,14 @@
             android:id="@+id/btnRegresarRegistro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="← Regresar"
+            android:text="@string/regresar"
             android:textAllCaps="false"
             android:layout_marginBottom="18dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Crear cuenta"
+            android:text="@string/crear_cuenta"
             android:textSize="30sp"
             android:textStyle="bold"
             android:textColor="#1E293B"
@@ -33,7 +33,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Regístrate para usar AprendeApp"
+            android:text="@string/subtitulo_registro"
             android:textSize="15sp"
             android:textColor="#64748B"
             android:layout_marginBottom="28dp" />
@@ -42,7 +42,7 @@
             android:id="@+id/edtNombre"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:hint="Nombre"
+            android:hint="@string/nombre"
             android:inputType="textPersonName"
             android:padding="14dp"
             android:background="@android:drawable/edit_text"
@@ -52,7 +52,7 @@
             android:id="@+id/edtEmailRegistro"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:hint="Correo electrónico"
+            android:hint="@string/correo_electronico"
             android:inputType="textEmailAddress"
             android:padding="14dp"
             android:background="@android:drawable/edit_text"
@@ -62,7 +62,7 @@
             android:id="@+id/edtPasswordRegistro"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:hint="Contraseña"
+            android:hint="@string/contrasena"
             android:inputType="textPassword"
             android:padding="14dp"
             android:background="@android:drawable/edit_text"
@@ -71,7 +71,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rol"
+            android:text="@string/rol"
             android:textStyle="bold"
             android:textColor="#334155"
             android:layout_marginBottom="8dp" />
@@ -88,7 +88,7 @@
             android:id="@+id/btnRegistrar"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:text="Registrarme"
+            android:text="@string/registrarme"
             android:textAllCaps="false"
             android:textSize="16sp" />
 

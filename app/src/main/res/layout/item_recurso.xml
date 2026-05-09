@@ -24,7 +24,7 @@
             android:id="@+id/txtTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Título"
+            android:text="@string/titulo_placeholder"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#1E293B"
@@ -34,7 +34,7 @@
             android:id="@+id/txtTipo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tipo"
+            android:text="@string/tipo_placeholder"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="#2563EB"
@@ -44,7 +44,7 @@
             android:id="@+id/txtDescripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descripción"
+            android:text="@string/descripcion_placeholder"
             android:textSize="15sp"
             android:textColor="#475569"
             android:layout_marginTop="8dp" />
@@ -53,7 +53,7 @@
             android:id="@+id/txtEnlace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ver recurso"
+            android:text="@string/ver_recurso"
             android:textSize="14sp"
             android:textColor="#2563EB"
             android:layout_marginTop="8dp" />
@@ -62,7 +62,7 @@
             android:id="@+id/txtRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="⭐ 0.0"
+            android:text="@string/rating_placeholder"
             android:textSize="15sp"
             android:textColor="#F59E0B"
             android:layout_marginTop="8dp" />
@@ -71,7 +71,7 @@
             android:id="@+id/btnFavorito"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Agregar a favoritos"
+            android:text="@string/agregar_favoritos"
             android:textAllCaps="false"
             android:layout_marginTop="10dp" />
 
@@ -79,7 +79,7 @@
             android:id="@+id/btnCalificar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Calificar recurso"
+            android:text="@string/calificar_recurso"
             android:textAllCaps="false"
             android:layout_marginTop="8dp" />
 
@@ -95,7 +95,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Editar"
+                android:text="@string/editar"
                 android:textAllCaps="false" />
 
             <Button
@@ -103,7 +103,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Eliminar"
+                android:text="@string/eliminar"
                 android:textAllCaps="false"
                 android:layout_marginStart="8dp" />
 

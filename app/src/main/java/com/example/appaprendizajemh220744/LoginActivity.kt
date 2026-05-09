@@ -36,7 +36,11 @@ class LoginActivity : AppCompatActivity() {
             val password = edtPassword.text.toString().trim()
 
             if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Completa todos los campos.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    getString(R.string.completa_campos),
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             }
 
@@ -53,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
 
                     Toast.makeText(
                         this,
-                        "Bienvenido, ${usuario.nombre}",
+                        getString(R.string.bienvenido_usuario, usuario.nombre),
                         Toast.LENGTH_SHORT
                     ).show()
 

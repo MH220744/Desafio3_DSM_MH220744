@@ -17,7 +17,7 @@
             android:id="@+id/btnRegresar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="← Regresar"
+            android:text="@string/regresar"
             android:textAllCaps="false"
             android:layout_marginBottom="16dp" />
 
@@ -25,7 +25,7 @@
             android:id="@+id/txtTituloFormulario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Formulario de recurso"
+            android:text="@string/formulario_recurso"
             android:textSize="26sp"
             android:textStyle="bold"
             android:textColor="#1E293B"
@@ -35,7 +35,7 @@
             android:id="@+id/edtTituloRecurso"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:hint="Título"
+            android:hint="@string/titulo"
             android:padding="12dp"
             android:background="@android:drawable/edit_text"
             android:layout_marginBottom="12dp" />
@@ -44,7 +44,7 @@
             android:id="@+id/edtDescripcionRecurso"
             android:layout_width="match_parent"
             android:layout_height="90dp"
-            android:hint="Descripción"
+            android:hint="@string/descripcion"
             android:gravity="top"
             android:padding="12dp"
             android:background="@android:drawable/edit_text"
@@ -54,7 +54,7 @@
             android:id="@+id/edtTipoRecurso"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:hint="Tipo: Libro, Video, Curso, Artículo"
+            android:hint="@string/tipo_recurso_hint"
             android:padding="12dp"
             android:background="@android:drawable/edit_text"
             android:layout_marginBottom="12dp" />
@@ -63,7 +63,7 @@
             android:id="@+id/edtEnlaceRecurso"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:hint="Enlace"
+            android:hint="@string/enlace"
             android:inputType="textUri"
             android:padding="12dp"
             android:background="@android:drawable/edit_text"
@@ -73,7 +73,7 @@
             android:id="@+id/edtImagenRecurso"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:hint="URL de imagen"
+            android:hint="@string/url_imagen"
             android:inputType="textUri"
             android:padding="12dp"
             android:background="@android:drawable/edit_text"
@@ -83,7 +83,7 @@
             android:id="@+id/btnGuardarRecurso"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:text="Guardar recurso"
+            android:text="@string/guardar_recurso"
             android:textAllCaps="false" />
 
     </LinearLayout>

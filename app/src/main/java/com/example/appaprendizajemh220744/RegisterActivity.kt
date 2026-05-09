@@ -30,7 +30,10 @@ class RegisterActivity : AppCompatActivity() {
             finish()
         }
 
-        val roles = listOf("Estudiante", "Docente")
+        val roles = listOf(
+            getString(R.string.rol_estudiante),
+            getString(R.string.rol_docente)
+        )
 
         spinnerRol.adapter = ArrayAdapter(
             this,
@@ -45,12 +48,20 @@ class RegisterActivity : AppCompatActivity() {
             val rol = spinnerRol.selectedItem.toString()
 
             if (nombre.isEmpty() || email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Completa todos los campos.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    getString(R.string.completa_campos),
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             }
 
             if (!PasswordValidator.esValida(password)) {
-                Toast.makeText(this, PasswordValidator.mensajeError(), Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    this,
+                    getString(R.string.password_error),
+                    Toast.LENGTH_LONG
+                ).show()
                 return@setOnClickListener
             }
 
@@ -64,7 +75,11 @@ class RegisterActivity : AppCompatActivity() {
             authController.registrar(
                 usuario = usuario,
                 onSuccess = {
-                    Toast.makeText(this, "Usuario registrado correctamente.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        getString(R.string.usuario_registrado),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     finish()
                 },
                 onError = { mensaje ->
