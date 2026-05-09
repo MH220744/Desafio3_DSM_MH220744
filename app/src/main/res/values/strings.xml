@@ -1,3 +1,88 @@
 <resources>
-    <string name="app_name">AppAprendizajemh220744</string>
+    <string name="app_name">AprendeApp</string>
+
+    <!-- Login -->
+    <string name="titulo_app">AprendeApp</string>
+    <string name="subtitulo_app">Sistema de recursos de aprendizaje</string>
+    <string name="correo_electronico">Correo electrónico</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="ir_registro">¿No tienes cuenta? Regístrate</string>
+
+    <!-- Registro -->
+    <string name="crear_cuenta">Crear cuenta</string>
+    <string name="subtitulo_registro">Regístrate para usar AprendeApp</string>
+    <string name="nombre">Nombre</string>
+    <string name="rol">Rol</string>
+    <string name="registrarme">Registrarme</string>
+    <string name="regresar">← Regresar</string>
+
+    <!-- Roles -->
+    <string name="rol_estudiante">Estudiante</string>
+    <string name="rol_docente">Docente</string>
+
+    <!-- Pantalla principal -->
+    <string name="recursos_aprendizaje">Recursos de aprendizaje</string>
+    <string name="buscar_hint">Buscar por ID, título o tipo</string>
+    <string name="buscar">Buscar</string>
+    <string name="agregar">Agregar</string>
+    <string name="ver_favoritos">Ver favoritos</string>
+    <string name="ver_todos">Ver todos</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+
+    <!-- Tarjeta recurso -->
+    <string name="titulo_placeholder">Título</string>
+    <string name="tipo_placeholder">Tipo</string>
+    <string name="descripcion_placeholder">Descripción</string>
+    <string name="ver_recurso">Ver recurso</string>
+    <string name="rating_placeholder">⭐ 0.0</string>
+    <string name="agregar_favoritos">Agregar a favoritos</string>
+    <string name="quitar_favoritos">Quitar de favoritos</string>
+    <string name="calificar_recurso">Calificar recurso</string>
+    <string name="editar">Editar</string>
+    <string name="eliminar">Eliminar</string>
+
+    <!-- Formulario recurso -->
+    <string name="formulario_recurso">Formulario de recurso</string>
+    <string name="titulo">Título</string>
+    <string name="descripcion">Descripción</string>
+    <string name="tipo_recurso_hint">Tipo: Libro, Video, Curso, Artículo</string>
+    <string name="enlace">Enlace</string>
+    <string name="url_imagen">URL de imagen</string>
+    <string name="guardar_recurso">Guardar recurso</string>
+
+    <!-- Alertas y Toasts -->
+    <string name="completa_campos">Completa todos los campos.</string>
+    <string name="usuario_registrado">Usuario registrado correctamente.</string>
+    <string name="bienvenido_usuario">Bienvenido, %1$s</string>
+    <string name="correo_password_incorrectos">Correo o contraseña incorrectos.</string>
+    <string name="error_inicio_sesion">No se pudo iniciar sesión.</string>
+    <string name="error_registro">No se pudo registrar el usuario.</string>
+    <string name="error_conexion">Error de conexión: %1$s</string>
+
+    <string name="no_recursos">No se encontraron recursos.</string>
+    <string name="no_usuario_actual">No se encontró el usuario actual.</string>
+    <string name="recurso_sin_id">Este recurso no tiene ID válido.</string>
+    <string name="favorito_agregado">Recurso agregado a favoritos.</string>
+    <string name="favorito_quitado">Recurso quitado de favoritos.</string>
+    <string name="sin_favoritos">No tienes recursos favoritos.</string>
+
+    <string name="calificar_titulo">Calificar recurso</string>
+    <string name="una_estrella">1 estrella</string>
+    <string name="dos_estrellas">2 estrellas</string>
+    <string name="tres_estrellas">3 estrellas</string>
+    <string name="cuatro_estrellas">4 estrellas</string>
+    <string name="cinco_estrellas">5 estrellas</string>
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="calificacion_guardada">Calificación guardada.</string>
+
+    <string name="eliminar_recurso">Eliminar recurso</string>
+    <string name="confirmar_eliminar_recurso">¿Seguro que deseas eliminar %1$s?</string>
+    <string name="recurso_eliminado">Recurso eliminado.</string>
+    <string name="recurso_creado">Recurso creado correctamente.</string>
+    <string name="recurso_actualizado">Recurso actualizado correctamente.</string>
+
+    <!-- Password -->
+    <string name="password_error">La contraseña debe tener mínimo 12 caracteres, una mayúscula, una minúscula, un número y un carácter especial.</string>
 </resources>
