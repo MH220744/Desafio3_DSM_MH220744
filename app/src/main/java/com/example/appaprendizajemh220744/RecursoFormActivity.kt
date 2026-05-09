@@ -57,7 +57,11 @@ class RecursoFormActivity : AppCompatActivity() {
                 enlace.isEmpty() ||
                 imagen.isEmpty()
             ) {
-                Toast.makeText(this, "Completa todos los campos.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    getString(R.string.completa_campos),
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             }
 
@@ -84,7 +88,11 @@ class RecursoFormActivity : AppCompatActivity() {
         recursoController.crearRecurso(
             recurso = recurso,
             onSuccess = {
-                Toast.makeText(this, "Recurso creado correctamente.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    getString(R.string.recurso_creado),
+                    Toast.LENGTH_SHORT
+                ).show()
                 finish()
             },
             onError = { mensaje ->
@@ -98,7 +106,11 @@ class RecursoFormActivity : AppCompatActivity() {
             id = recursoId ?: "",
             recurso = recurso,
             onSuccess = {
-                Toast.makeText(this, "Recurso actualizado correctamente.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    getString(R.string.recurso_actualizado),
+                    Toast.LENGTH_SHORT
+                ).show()
                 finish()
             },
             onError = { mensaje ->
