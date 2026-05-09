@@ -160,7 +160,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun alternarFavorito(recurso: Recurso) {
         val idUsuario = sessionManager.obtenerIdUsuario()
-        val idRecurso = recurso.id ?: return
+        val idRecurso = recurso.id
+
+        if (idUsuario.isEmpty()) {
+            Toast.makeText(this, "No se encontró el usuario actual.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (idRecurso.isNullOrEmpty()) {
+            Toast.makeText(this, "Este recurso no tiene ID válido.", Toast.LENGTH_SHORT).show()
+            return
+        }
 
         if (favoritosManager.esFavorito(idUsuario, idRecurso)) {
             favoritosManager.quitarFavorito(idUsuario, idRecurso)
@@ -200,7 +210,7 @@ class MainActivity : AppCompatActivity() {
         val idRecurso = recurso.id
 
         if (idRecurso.isNullOrEmpty()) {
-            Toast.makeText(this, "No se puede calificar este recurso.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Este recurso no tiene ID válido.", Toast.LENGTH_SHORT).show()
             return
         }
 
