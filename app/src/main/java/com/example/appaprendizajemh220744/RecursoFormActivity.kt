@@ -50,7 +50,13 @@ class RecursoFormActivity : AppCompatActivity() {
             val enlace = edtEnlace.text.toString().trim()
             val imagen = edtImagen.text.toString().trim()
 
-            if (titulo.isEmpty() || descripcion.isEmpty() || tipo.isEmpty() || enlace.isEmpty() || imagen.isEmpty()) {
+            if (
+                titulo.isEmpty() ||
+                descripcion.isEmpty() ||
+                tipo.isEmpty() ||
+                enlace.isEmpty() ||
+                imagen.isEmpty()
+            ) {
                 Toast.makeText(this, "Completa todos los campos.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }

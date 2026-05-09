@@ -19,6 +19,7 @@ class RecursoAdapter(
     private val rol: String,
     private val favoritosIds: Set<String>,
     private val onFavorito: (Recurso) -> Unit,
+    private val onCalificar: (Recurso) -> Unit,
     private val onEditar: (Recurso) -> Unit,
     private val onEliminar: (Recurso) -> Unit
 ) : RecyclerView.Adapter<RecursoAdapter.RecursoViewHolder>() {
@@ -31,6 +32,7 @@ class RecursoAdapter(
         val txtEnlace: TextView = view.findViewById(R.id.txtEnlace)
         val txtRating: TextView = view.findViewById(R.id.txtRating)
         val btnFavorito: Button = view.findViewById(R.id.btnFavorito)
+        val btnCalificar: Button = view.findViewById(R.id.btnCalificar)
         val layoutBotonesDocente: LinearLayout = view.findViewById(R.id.layoutBotonesDocente)
         val btnEditar: Button = view.findViewById(R.id.btnEditar)
         val btnEliminar: Button = view.findViewById(R.id.btnEliminar)
@@ -39,6 +41,7 @@ class RecursoAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecursoViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_recurso, parent, false)
+
         return RecursoViewHolder(view)
     }
 
@@ -50,7 +53,7 @@ class RecursoAdapter(
         holder.txtTipo.text = recurso.tipo
         holder.txtDescripcion.text = recurso.descripcion
         holder.txtEnlace.text = recurso.enlace
-        holder.txtRating.text = "⭐ ${recurso.ratingPromedio} (${recurso.totalRatings})"
+        holder.txtRating.text = "⭐ ${String.format("%.1f", recurso.ratingPromedio)} (${recurso.totalRatings})"
 
         Glide.with(holder.itemView.context)
             .load(recurso.imagen)
@@ -64,6 +67,7 @@ class RecursoAdapter(
 
         if (rol == "Estudiante") {
             holder.btnFavorito.visibility = View.VISIBLE
+            holder.btnCalificar.visibility = View.VISIBLE
 
             holder.btnFavorito.text = if (favoritosIds.contains(idRecurso)) {
                 "Quitar de favoritos"
@@ -72,16 +76,21 @@ class RecursoAdapter(
             }
         } else {
             holder.btnFavorito.visibility = View.GONE
-        }
-
-        holder.btnFavorito.setOnClickListener {
-            onFavorito(recurso)
+            holder.btnCalificar.visibility = View.GONE
         }
 
         if (rol == "Docente") {
             holder.layoutBotonesDocente.visibility = View.VISIBLE
         } else {
             holder.layoutBotonesDocente.visibility = View.GONE
+        }
+
+        holder.btnFavorito.setOnClickListener {
+            onFavorito(recurso)
+        }
+
+        holder.btnCalificar.setOnClickListener {
+            onCalificar(recurso)
         }
 
         holder.btnEditar.setOnClickListener {
