@@ -37,6 +37,8 @@
             android:layout_height="55dp"
             android:hint="@string/titulo"
             android:padding="12dp"
+            android:textColor="#111827"
+            android:textColorHint="#374151"
             android:background="@android:drawable/edit_text"
             android:layout_marginBottom="12dp" />
 
@@ -47,6 +49,8 @@
             android:hint="@string/descripcion"
             android:gravity="top"
             android:padding="12dp"
+            android:textColor="#111827"
+            android:textColorHint="#374151"
             android:background="@android:drawable/edit_text"
             android:layout_marginBottom="12dp" />
 
@@ -56,6 +60,8 @@
             android:layout_height="55dp"
             android:hint="@string/tipo_recurso_hint"
             android:padding="12dp"
+            android:textColor="#111827"
+            android:textColorHint="#374151"
             android:background="@android:drawable/edit_text"
             android:layout_marginBottom="12dp" />
 
@@ -66,6 +72,8 @@
             android:hint="@string/enlace"
             android:inputType="textUri"
             android:padding="12dp"
+            android:textColor="#111827"
+            android:textColorHint="#374151"
             android:background="@android:drawable/edit_text"
             android:layout_marginBottom="12dp" />
 
@@ -76,6 +84,8 @@
             android:hint="@string/url_imagen"
             android:inputType="textUri"
             android:padding="12dp"
+            android:textColor="#111827"
+            android:textColorHint="#374151"
             android:background="@android:drawable/edit_text"
             android:layout_marginBottom="20dp" />
 
