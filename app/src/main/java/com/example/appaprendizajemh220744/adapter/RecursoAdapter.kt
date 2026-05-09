@@ -48,6 +48,7 @@ class RecursoAdapter(
     override fun onBindViewHolder(holder: RecursoViewHolder, position: Int) {
         val recurso = recursos[position]
         val idRecurso = recurso.id ?: ""
+        val context = holder.itemView.context
 
         holder.txtTitulo.text = recurso.titulo
         holder.txtTipo.text = recurso.tipo
@@ -55,31 +56,31 @@ class RecursoAdapter(
         holder.txtEnlace.text = recurso.enlace
         holder.txtRating.text = "⭐ ${String.format("%.1f", recurso.ratingPromedio)} (${recurso.totalRatings})"
 
-        Glide.with(holder.itemView.context)
+        Glide.with(context)
             .load(recurso.imagen)
             .placeholder(R.mipmap.ic_launcher)
             .into(holder.imgRecurso)
 
         holder.txtEnlace.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(recurso.enlace))
-            holder.itemView.context.startActivity(intent)
+            context.startActivity(intent)
         }
 
-        if (rol == "Estudiante") {
+        if (rol == context.getString(R.string.rol_estudiante)) {
             holder.btnFavorito.visibility = View.VISIBLE
             holder.btnCalificar.visibility = View.VISIBLE
 
             holder.btnFavorito.text = if (favoritosIds.contains(idRecurso)) {
-                "Quitar de favoritos"
+                context.getString(R.string.quitar_favoritos)
             } else {
-                "Agregar a favoritos"
+                context.getString(R.string.agregar_favoritos)
             }
         } else {
             holder.btnFavorito.visibility = View.GONE
             holder.btnCalificar.visibility = View.GONE
         }
 
-        holder.layoutBotonesDocente.visibility = if (rol == "Docente") {
+        holder.layoutBotonesDocente.visibility = if (rol == context.getString(R.string.rol_docente)) {
             View.VISIBLE
         } else {
             View.GONE
