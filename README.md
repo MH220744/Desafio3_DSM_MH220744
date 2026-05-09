@@ -1,4 +1,4 @@
-# App de aprendizaje
+# AprendeApp
 
 Aplicación móvil Android desarrollada en Kotlin para gestionar recursos de aprendizaje mediante una API dinámica. Permite visualizar, buscar, guardar favoritos, calificar recursos y administrar contenido según el rol del usuario.
 
