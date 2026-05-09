@@ -12,11 +12,12 @@
         android:theme="@style/Theme.AppAprendizajemh220744">
 
         <activity android:name=".RegisterActivity" />
+        <activity android:name=".RecursoFormActivity" />
+        <activity android:name=".MainActivity" />
 
         <activity
             android:name=".LoginActivity"
             android:exported="true">
-            <activity android:name=".RecursoFormActivity" />
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,8 +25,6 @@
             </intent-filter>
 
         </activity>
-
-        <activity android:name=".MainActivity" />
 
     </application>
 
