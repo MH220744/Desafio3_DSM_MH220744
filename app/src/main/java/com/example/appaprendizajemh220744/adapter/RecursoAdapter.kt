@@ -17,7 +17,7 @@ import com.example.appaprendizajemh220744.model.Recurso
 class RecursoAdapter(
     private val recursos: MutableList<Recurso>,
     private val rol: String,
-    private val favoritosIds: Set<String>,
+    private var favoritosIds: Set<String>,
     private val onFavorito: (Recurso) -> Unit,
     private val onCalificar: (Recurso) -> Unit,
     private val onEditar: (Recurso) -> Unit,
@@ -79,10 +79,10 @@ class RecursoAdapter(
             holder.btnCalificar.visibility = View.GONE
         }
 
-        if (rol == "Docente") {
-            holder.layoutBotonesDocente.visibility = View.VISIBLE
+        holder.layoutBotonesDocente.visibility = if (rol == "Docente") {
+            View.VISIBLE
         } else {
-            holder.layoutBotonesDocente.visibility = View.GONE
+            View.GONE
         }
 
         holder.btnFavorito.setOnClickListener {
@@ -109,6 +109,11 @@ class RecursoAdapter(
     fun actualizarLista(nuevaLista: List<Recurso>) {
         recursos.clear()
         recursos.addAll(nuevaLista)
+        notifyDataSetChanged()
+    }
+
+    fun actualizarFavoritos(nuevosFavoritos: Set<String>) {
+        favoritosIds = nuevosFavoritos
         notifyDataSetChanged()
     }
 }

@@ -158,6 +158,10 @@ class MainActivity : AppCompatActivity() {
                 progressBar.visibility = View.GONE
                 listaRecursosOriginal = recursos
 
+                adapter.actualizarFavoritos(
+                    favoritosManager.obtenerFavoritos(sessionManager.obtenerIdUsuario())
+                )
+
                 val textoBusqueda = findViewById<EditText>(R.id.edtBuscar).text.toString()
 
                 if (mostrandoFavoritos) {
@@ -214,6 +218,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        adapter.actualizarFavoritos(favoritosIds)
         adapter.actualizarLista(favoritos)
 
         if (favoritos.isEmpty()) {
@@ -243,10 +248,13 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Recurso agregado a favoritos.", Toast.LENGTH_SHORT).show()
         }
 
+        val favoritosActualizados = favoritosManager.obtenerFavoritos(idUsuario)
+        adapter.actualizarFavoritos(favoritosActualizados)
+
         if (mostrandoFavoritos) {
             mostrarSoloFavoritos(findViewById<EditText>(R.id.edtBuscar).text.toString())
         } else {
-            cargarRecursos(findViewById(R.id.progressBar))
+            filtrarRecursos(findViewById<EditText>(R.id.edtBuscar).text.toString())
         }
     }
 
